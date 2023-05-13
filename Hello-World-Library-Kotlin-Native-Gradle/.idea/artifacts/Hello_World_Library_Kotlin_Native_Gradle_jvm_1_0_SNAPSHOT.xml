@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Hello-World-Library-Kotlin-Native-Gradle-jvm-1.0-SNAPSHOT">
+    <output-path>$PROJECT_DIR$/build/libs</output-path>
+    <root id="archive" name="Hello-World-Library-Kotlin-Native-Gradle-jvm-1.0-SNAPSHOT.jar">
+      <element id="module-output" name="Hello-World-Library-Kotlin-Native-Gradle.jvmMain" />
+    </root>
+  </artifact>
+</component>
