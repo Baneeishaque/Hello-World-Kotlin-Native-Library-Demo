@@ -1,9 +1,9 @@
-#include "libnative_api.h"
+#include "native_api.h"
 #include "stdio.h"
 
 int main(int argc, char** argv) {
     //obtain reference for calling Kotlin/Native functions
-    libnative_ExportedSymbols* lib = libnative_symbols();
+    native_ExportedSymbols* lib = native_symbols();
 
     lib->kotlin.root.example.forIntegers(1, 2, 3, 4);
     lib->kotlin.root.example.forFloats(1.0f, 2.0);
@@ -15,7 +15,7 @@ int main(int argc, char** argv) {
     lib->DisposeString(response);
 
     //create Kotlin object instance
-    libnative_kref_example_Clazz newInstance = lib->kotlin.root.example.Clazz.Clazz();
+    native_kref_example_Clazz newInstance = lib->kotlin.root.example.Clazz.Clazz();
     long x = lib->kotlin.root.example.Clazz.memberFunction(newInstance, 42);
     lib->DisposeStablePointer(newInstance.pinned);
 

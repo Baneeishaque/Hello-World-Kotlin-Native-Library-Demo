@@ -1,4 +1,4 @@
-libnative.*
-libnative_api.h
+native.*
+native_api.h
 main.exe
 main.obj

@@ -40,15 +40,11 @@ kotlin {
         isMingwX64 -> mingwX64("native")
         else -> throw GradleException("Host OS is not supported in Kotlin/Native.")
     }
-    val nativeSharedLibraryBaseName = when {
-        hostOs == "Linux" || hostOs == "Mac OS X" -> "native"
-        isMingwX64 -> "libnative"
-        else -> throw GradleException("Host OS is not supported in Kotlin/Native.")
-    }
+
     nativeTarget.apply {
         binaries {
             sharedLib {
-                baseName = nativeSharedLibraryBaseName
+                baseName = "native"
             }
         }
     }
