@@ -5,7 +5,7 @@ object Object {
 }
 
 class Clazz {
-    fun memberFunction(p: Int): ULong = 42UL
+    fun memberFunction(p: Int): Int = 42
 }
 
 fun forIntegers(b: Byte, s: Short, i: UInt, l: Long) { }

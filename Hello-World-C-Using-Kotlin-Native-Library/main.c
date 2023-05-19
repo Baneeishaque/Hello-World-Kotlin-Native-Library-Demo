@@ -16,10 +16,10 @@ int main(int argc, char** argv) {
 
     //create Kotlin object instance
     native_kref_example_Clazz newInstance = lib->kotlin.root.example.Clazz.Clazz();
-    long x = lib->kotlin.root.example.Clazz.memberFunction(newInstance, 42);
+    int x = lib->kotlin.root.example.Clazz.memberFunction(newInstance, 42);
     lib->DisposeStablePointer(newInstance.pinned);
 
-    printf("DemoClazz returned %ld\n", x);
+    printf("DemoClazz returned %d\n", x);
 
     return 0;
 }
