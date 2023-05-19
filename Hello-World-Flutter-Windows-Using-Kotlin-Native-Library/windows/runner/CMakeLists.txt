@@ -12,9 +12,9 @@ add_executable(${BINARY_NAME} WIN32
   "utils.cpp"
   "win32_window.cpp"
   "${FLUTTER_MANAGED_DIR}/generated_plugin_registrant.cc"
-  "../../../Hello-World-Library-Kotlin-Native-Gradle/build/bin/native/debugShared/native_api.h"
   "Runner.rc"
   "runner.exe.manifest"
+  "../../../Hello-World-Library-Kotlin-Native-Gradle/build/bin/native/debugShared/native_api.h"
 )
 
 # Apply the standard set of build settings. This can be removed for applications
