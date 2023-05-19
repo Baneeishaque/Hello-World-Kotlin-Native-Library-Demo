@@ -35,8 +35,17 @@ target_compile_definitions(${BINARY_NAME} PRIVATE "NOMINMAX")
 # dependencies here.
 target_link_libraries(${BINARY_NAME} PRIVATE flutter flutter_wrapper_app)
 target_link_libraries(${BINARY_NAME} PRIVATE "dwmapi.lib")
-target_link_libraries(${BINARY_NAME} PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/../../../Hello-World-Library-Kotlin-Native-Gradle/build/bin/native/debugShared/native.lib")
 target_include_directories(${BINARY_NAME} PRIVATE "${CMAKE_SOURCE_DIR}")
 
 # Run the Flutter tool portions of the build. This must not be removed.
 add_dependencies(${BINARY_NAME} flutter_assemble)
+
+add_library(kotlin_native SHARED IMPORTED)
+set_target_properties(kotlin_native PROPERTIES
+        IMPORTED_IMPLIB "${CMAKE_CURRENT_SOURCE_DIR}/../../../Hello-World-Library-Kotlin-Native-Gradle/build/bin/native/debugShared/native.lib"
+        IMPORTED_LOCATION "${CMAKE_CURRENT_SOURCE_DIR}/../../../Hello-World-Library-Kotlin-Native-Gradle/build/bin/native/debugShared/native.dll")
+target_link_libraries(${BINARY_NAME} PRIVATE kotlin_native)
+add_custom_command(TARGET ${BINARY_NAME} POST_BUILD
+  COMMAND ${CMAKE_COMMAND} -E copy -t $<TARGET_FILE_DIR:${BINARY_NAME}> $<TARGET_RUNTIME_DLLS:${BINARY_NAME}>
+  COMMAND_EXPAND_LISTS
+)

@@ -10,6 +10,8 @@
 #include <memory>
 #include <optional>
 
+#include "../../../Hello-World-Library-Kotlin-Native-Gradle/build/bin/native/debugShared/native_api.h"
+
 #include "flutter/generated_plugin_registrant.h"
 
 static constexpr int kBatteryError = -1;
@@ -65,6 +67,16 @@ bool FlutterWindow::OnCreate() {
                 } else {
                   result->Success(battery_level);
                 }
+              } else if (call.method_name() == "getComputationResult") {
+                  
+                  native_ExportedSymbols* lib = native_symbols();
+
+                  native_kref_example_Clazz newInstance = lib->kotlin.root.example.Clazz.Clazz();
+                  int x = lib->kotlin.root.example.Clazz.memberFunction(newInstance, 42);
+                  lib->DisposeStablePointer(newInstance.pinned);
+                  
+                  result->Success(x);
+
               } else {
                 result->NotImplemented();
               }
